@@ -1034,6 +1034,7 @@ class Employee extends CI_Controller {
 		$data['months'] = $this->Common_Model->list_months($start,$end, 'd-m-Y');
 				// echo '<pre>';print_r($data);exit;
 
+				
 		$this->load->view('employee/viewemployee', $data);
 	}
 	
