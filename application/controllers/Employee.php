@@ -1908,7 +1908,7 @@ class Employee extends CI_Controller {
 			if($this->form_validation->run()){
 
 				$datalist = array(
-					'st_paymode' 			=> $this->input->post('st_paymode'), 
+						'st_paymode' 			=> $this->input->post('st_paymode'), 
 						'st_bankname' 			=> $this->input->post('st_bankname'), 
 						'st_acno' 				=> $this->input->post('st_acno'), 
 						'st_acholdername' 		=> $this->input->post('st_acholdername'), 
