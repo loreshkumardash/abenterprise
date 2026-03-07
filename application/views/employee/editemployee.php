@@ -415,6 +415,12 @@
                                                             <input type="file" class="form-control input-sm"
                                                                 id="emp_photo" name="emp_photo"
                                                                 accept="image/png,image/jpeg,image/jpg">
+                                                            <?php if(!empty($employee[0]['emp_photo'])){ ?>
+                                                            <a href="<?= base_url('uploads/employeeicon/'.$employee[0]['emp_photo']) ?>"
+                                                                target="_blank">
+                                                                View Uploaded image
+                                                            </a>
+                                                            <?php } ?>
                                                         </div>
                                                     </div>
                                                 </div>
