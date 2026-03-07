@@ -1146,7 +1146,7 @@
                                                                             $sel = ($edu['degree'] === $lvl) ? 'selected' : '';
                                                                             echo "<option value=\"$lvl\" $sel>$lvl</option>";
                                                                         }
-                                                                        ?>
+                                                                    ?>
                                                                 </select>
 
                                                             </div>
