@@ -1871,7 +1871,7 @@ class Employee extends CI_Controller {
 					'access_id'			=> 0,
 					'created_on'		=> date('Y-m-d H:i:s'),
 					'userstatus'		=> '1',
-					'employee_tagged_id'	=> $records[$i]['employee_id'],
+					'employee_tagged_id'	=> $records[$i]['employee_id'], 
 					'usercategory'		=> 0,
 				);
 				$user_id = $this->Common_Model->dbinsertid("users", $data_list);
@@ -1919,7 +1919,6 @@ class Employee extends CI_Controller {
 						'int_worker' 			=> $this->input->post('int_worker'), 
 						'place_oforigin' 		=> $this->input->post('place_oforigin'), 
 						
-						 
 						'kyc_panno' 			=> $this->input->post('kyc_panno'), 
 						'kyc_panname' 			=> $this->input->post('kyc_panname'), 
 						'kyc_adharno' 			=> $this->input->post('kyc_adharno'), 
