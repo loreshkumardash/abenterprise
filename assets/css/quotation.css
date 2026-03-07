@@ -1,0 +1,178 @@
+ 
+    /*.subpage:before { */
+    /*  content: url(img/bkg.png);*/
+    /*  position:absolute;*/
+    /*  }*/
+    @media print {
+      
+      /*.subpage:before { content: url(img/bkg.png);*/
+      /*  position:absolute;*/
+      /*}*/
+     .fa-check-square-o{
+        color:#2196f3 !important;
+       }
+    }
+
+    .page {
+      size: A4;
+      margin: 3mm 6mm 3mm 6mm;
+      padding: 30px;
+    }
+    .subpage {
+      /*padding: 2px;
+      border: gray double;*/
+      height: 275mm;
+
+    }
+   
+    footer {
+        position: absolute !important;
+        bottom: 5% !important;
+        left: 15% !important;
+      }
+        @page {
+        size: A4;
+        margin: 0;
+    }
+    @media print {
+           #red{
+      color: red !important;
+      margin-bottom:0px !important; 
+      line-height:20px !important;
+    }
+    .its1 #red{
+      font-weight: 600 !important;
+  
+}
+      footer {
+        position: absolute !important;
+        bottom: 5% !important;
+        left:15% !important;
+      }
+      .dn{
+        display: none;
+      }
+         
+        .page {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            
+        }
+          .its p{
+    font-style: italic !important;
+    font-family: serif;
+    font-size: 14px !important;
+    margin-bottom:0px !important;
+  }
+  .its1 p{
+    font-style: italic !important;
+    font-family: serif;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    margin-left: 30px !important;
+    margin-bottom:0px !important;
+  }
+    }
+  
+
+
+@media print {
+  .tb tr, .tb td{
+  padding: 4px !important;
+}
+  .bkc{
+    display: none;
+  }
+  #yellow{
+    color: orange !important;
+  }
+  
+  #darkblue{
+    color: darkblue !important;
+  }
+  #blue{
+    color: blue !important;
+  }
+  #green{
+    color: green !important;
+  }
+  .its p{
+    font-style: italic !important;
+    font-family: math;
+    font-size: 16px !important;
+  }
+  .its1 p{
+   font-style: italic !important;
+    font-family: math;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    margin-left: 30px !important;
+  }
+   #red{
+      color: red !important;
+    }
+    .its1 #red{
+      font-weight: 600 !important;
+  
+}
+
+.line{
+  height: 1px;width: 180px;background-color: #000 !important;
+}
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  float: left;
+}
+.col-md-12 {
+  width: 100%;
+}
+.col-md-11 {
+  width: 91.66666666666666%;
+}
+.col-md-10 {
+  width: 83.33333333333334%;
+}
+.col-md-9 {
+  width: 75%;
+}
+.col-md-8 {
+  width: 66.66666666666666%;
+}
+.col-md-7 {
+  width: 58.333333333333336%;
+}
+.col-md-6 {
+  width: 50%;
+}
+.col-md-5 {
+  width: 41.66666666666667%;
+}
+.col-md-4 {
+  width: 33.33333333333333%;
+ }
+ .col-md-3 {
+   width: 25%;
+ }
+ .col-md-2 {
+   width: 16.666666666666664%;
+ }
+ .col-md-1 {
+  width: 8.333333333333332%;
+ }
+    .ct>thead>tr>th, .ct>tbody>tr>th, .ct>tfoot>tr>th, .ct>thead>tr>td, .ct>tbody>tr>td, .ct>tfoot>tr>td{
+      border:none !important; 
+      padding: 4px !important;
+    }
+   
+    #twp{
+      white-space: nowrap;
+    }
+  }
+
+ .ct>thead>tr>th, .ct>tbody>tr>th, .ct>tfoot>tr>th, .ct>thead>tr>td, .ct>tbody>tr>td, .ct>tfoot>tr>td{
+      border:none !important; 
+      padding: 4px !important;
+    } 

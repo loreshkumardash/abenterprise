@@ -1,0 +1,187 @@
+<?php $this->load->view("common/meta");?>
+<div class="wrapper">
+
+  <?php $this->load->view("common/sidebar");?>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Tution Fee Status</h3>
+            </div>
+            <!-- /.box-header -->
+            
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <?php
+                  if($this->session->flashdata('success')){
+                  ?>
+                  <div class="alert alert-dismissable alert-success">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <strong>Success !</strong> <?php echo $this->session->flashdata('success');?>
+                  </div>
+                  <?php
+                  }
+                  
+                  if($this->session->flashdata('error')){
+                  ?>
+                  <div class="alert alert-dismissable alert-danger">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <strong>Success !</strong> <?php echo $this->session->flashdata('error');?>
+                  </div>
+                  <?php
+                  }
+                  ?>
+                </div>
+                <form role="form" action="" method="post" id="searchForm">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="session_id">Session</label>
+                    <select class="form-control " id="session_id" name="session_id" readonly="readonly">
+                      <?php if($sessions){ for($i=0;$i<count($sessions);$i++){if($sessions[$i]['active_session'] == 'Active'){?>
+                      <option value="<?php echo $sessions[$i]['session_id'];?>" <?php echo $sessions[$i]['active_session'] == 'Active' ? 'selected="selected"' : '';?>><?php echo $sessions[$i]['session_name'];?></option>
+                      <?php }}}?>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="class_id">Class</label>
+                    <select class="form-control " id="class_id" name="class_id">
+                      <option value=""></option>
+                      <?php if($classes){ for($i=0;$i<count($classes);$i++){?>
+                      <option value="<?php echo $classes[$i]['class_id'];?>" <?php echo set_value('class_id') == $classes[$i]['class_id'] ? 'selected="selected"' : '';?>><?php echo $classes[$i]['class_name'];?></option>
+                      <?php }}?>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6" style="padding-top: 15px;">
+                  <button type="submit" formaction="<?php echo site_url("reports/monthlyfeestatus");?>" name="submitBtn" value="submit" class="btn bg-navy btn-flat margin">Search</button>
+                  <button type="submit" formaction="<?php echo site_url("reports/download_tutionfee_defaulter");?>" name="submitBtn1" value="submit" class="btn bg-navy btn-flat margin">Download Defaulter</button>
+                  <button type="submit" formaction="<?php echo site_url("reports/download_tutionfee_list");?>" name="submitBtn2" value="submit" class="btn bg-navy btn-flat margin">Download All</button>
+                </div>
+                </form>
+              </div>
+              <div class="row">
+                <div class="col-md-12" id="dataTablediv">
+                  <?php
+                  if(isset($students) && $students){
+                    ?>
+                  <table class="table table-bordered table-condensed table-striped">
+                    <tr>
+                      <th>Sl No</th>
+                      <th>Student Names</th>
+                      <?php
+                      if($months){
+                        foreach ($months as $month) {
+                          echo '<th>'.$month['strmonth'].'</th>';
+                        }
+                      }
+                      ?>
+                    </tr>
+                    <?php
+                    $sl = 1;
+                    for($i=0;$i<count($students);$i++){
+                      if($students[$i]['is_emi'] == '1'){
+                        continue;
+                      }
+                      $exists = db_query("SELECT * FROM student_tutionfee WHERE student_id = ".$students[$i]['student_id']." AND admission_id = ".$students[$i]['admission_id']);
+                      if($exists){
+                        ?>
+                    <tr>
+                      <th><?=$sl++;?></th>
+                      <th><?php echo $students[$i]['student_first_name'].' '.$students[$i]['student_last_name'];?></th>
+                        <?php
+                      }else{
+                        continue;
+                      }
+                      if($months){
+                        foreach ($months as $month) {
+                          $feelist = db_query("SELECT * FROM student_tutionfee WHERE month_year = '".$month['monthyear']."' AND  student_id = ".$students[$i]['student_id']." AND admission_id = ".$students[$i]['admission_id']);
+                          if($feelist){
+                            $tdclass = '';
+                            $amount = 0;
+                            $status = '';
+                            if($feelist[0]['is_billable'] == '1'){
+                              if($feelist[0]['paid_status'] == 'Paid'){
+                                $tdclass = 'success';
+                                $amount = (int)$feelist[0]['fee_amount'];
+                                $status = 'Paid';
+                              }
+                              if($feelist[0]['paid_status'] == 'Pending'){
+                                $tdclass = 'danger';
+                                $amount = (int)$feelist[0]['fee_amount'];
+                                $status = 'Pending';
+                              }
+                              if($feelist[0]['paid_status'] == 'Partial'){
+                                $tdclass = 'warning';
+                                $amount = $feelist[0]['fee_amount'] - $feelist[0]['paid_amount'];
+                                $status = 'Partial';
+                              }
+                            }else{
+                              $tdclass = 'info';
+                              $amount = '';
+                              $status = '';
+                            }
+                      ?>
+                      <td class="<?=$tdclass;?>"><?php echo $status.' - '.$amount;?></td>
+                      <?php
+                          }else{
+                      ?>
+                      <td class="info">-</td>
+                      <?php
+                          }
+                        }
+                      }
+                      ?>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                  </table>
+                    <?php
+                  }
+                  ?>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <?php $this->load->view("common/footer");?>
+</div>
+<!-- ./wrapper -->
+
+<?php $this->load->view("common/script");?>
+
+<script type="text/javascript">
+
+  function searchForm(){
+    $.ajax({
+      url:"<?php echo site_url('student/liststudents_ajax');?>",
+      type:"POST",
+      data: $("#searchForm").serialize(),
+      dataType:"html",
+      success: function(data){
+        $('#dataTablediv').html(data);
+      }
+    });
+  }
+  $(document).ready(function(){
+  
+  });
+</script>
+</body>
+</html>
