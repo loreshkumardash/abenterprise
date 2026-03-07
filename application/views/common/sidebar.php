@@ -338,9 +338,9 @@
                                 class="fa fa-circle-o"></i>Add Lead</a>
                     </li>
 
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                             <a href="<?php echo site_url("lead/add_lead");?>" class="nav-link <?=$submenu == 'multi_lead' ? 'active' : ''?>"><i class="fa fa-circle-o"></i>Add Multiple Lead</a>
-                        </li> -->
+                        </li>
 
                     <li class="nav-item">
                         <a href="<?php echo site_url("emp_leads");?>"
@@ -358,10 +358,6 @@
                 </ul>
             </li>
             <?php } ?>
-
-
-
-
 
             <?php if(in_array('leadview', $accessar) || $this->session->userdata('usertype') == 'Employee'){ ?>
             <li class="<?php echo isset($activemenu) && $activemenu == 'leadreport'? 'active' : ''?> treeview">

@@ -119,10 +119,6 @@ class Lead extends CI_Controller {
 			$data['records'] = 0;
 		}
 
-		
-
-        
-
 		$data['users'] = $this->Common_Model->FetchData("users","*","1 ORDER BY user_id");
 		$data['mainmenu'] = 'lead';
 		$data['submenu'] = 'listlead';
@@ -149,7 +145,7 @@ class Lead extends CI_Controller {
             foreach ($selected_leads as $enq_id) {
     
                 $result = $this->Common_Model->update_records('lead_enquiry',"enq_id",$enq_id,array('assigned_to'=>$emp_id));
-                
+
             }
 
                 $this->session->set_flashdata('success', 'Leads successfully assigned to the employee.');
@@ -207,11 +203,8 @@ class Lead extends CI_Controller {
 
 	        redirect('lead');
 	    }
-
 	   
 	}
-
-	
 
 	public function view_leads($enq_id = 0) { 
     $data = array();

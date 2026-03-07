@@ -1394,28 +1394,74 @@ class Employee extends CI_Controller {
 
 				if (!empty($_FILES['emp_cheque']['name'])) {
 
-    				$config = [
-        				'upload_path'   => './uploads/cheques/',
-       				 'allowed_types' => 'pdf|jpg|jpeg|png',
-       				 'encrypt_name'  => true,
-       				 'max_size'      => 2048
-   				 ];
+				    $path = FCPATH . 'uploads/cheques/';
 
-   				 $this->load->library('upload', $config);
+				    if (!is_dir($path)) {
+				        mkdir($path, 0777, true);
+				    }
 
-    				if (!$this->upload->do_upload('emp_cheque')) {
+				    $config = [
+				        'upload_path'   => $path,
+				        'allowed_types' => 'pdf|jpg|jpeg|png',
+				        'encrypt_name'  => true,
+				        'max_size'      => 2048
+				    ];
 
-       				 $this->session->set_flashdata('error', $this->upload->display_errors());
-       				 redirect($_SERVER['HTTP_REFERER']);
-       				 exit;
+				    $this->load->library('upload');
+				    $this->upload->initialize($config);
 
-    				} else {
+				    if (!$this->upload->do_upload('emp_cheque')) {
 
-       				 $uploadData  = $this->upload->data();
-        				$cheque_file = $uploadData['file_name'];
-    				}
+				        echo $this->upload->display_errors();
+				        exit;
+
+				    } else {
+
+				        $uploadData  = $this->upload->data();
+				        $cheque_file = $uploadData['file_name'];
+				    }
 				}
 
+				$pvr_file = $this->input->post('old_pvr');
+
+							$config = [
+							    'upload_path'   => './uploads/employee_documents/',
+							    'allowed_types' => 'jpg|jpeg|png|pdf',
+							    'encrypt_name'  => true,
+							    'max_size'      => 2048
+							];
+
+							$this->load->library('upload');
+
+							if (!empty($_FILES['pvr']['name'])) {
+
+							    $this->upload->initialize($config);
+
+							    if ($this->upload->do_upload('pvr')) {
+
+							        $data = $this->upload->data();
+							        $pvr_file = $data['file_name'];
+
+							        // delete old file if exists
+							        $old = $this->input->post('old_pvr');
+							        if ($old && file_exists('./uploads/employee_documents/'.$old)) {
+							            unlink('./uploads/employee_documents/'.$old);
+							        }
+
+							    } else {
+							        echo $this->upload->display_errors();
+							        exit;
+							    }
+							}
+
+							$doc_data = [
+							    'employee_id' => $employee_id,
+							    'pvr' => $pvr_file
+							];
+							
+							$this->db->where('employee_id', $employee_id);
+							$this->db->update('employee_documents', $doc_data);
+							
 				$bankData = [
 
     				'st_paymode'      => $this->input->post('st_paymode'),
@@ -1790,6 +1836,11 @@ class Employee extends CI_Controller {
 		$data['bank'] = $this->db
         ->where('employee_id',$employee_id)
         ->get('bankandkyc')
+        ->row_array();
+
+		$data['doc'] = $this->db
+        ->where('employee_id', $employee_id)
+        ->get('employee_documents')
         ->row_array();
 				$this->load->view('employee/editemployee', $data);
 }

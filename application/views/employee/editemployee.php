@@ -1088,6 +1088,27 @@
                                                 </div>
                                             </div>
 
+                                            <div class="col-md-6" style="padding:0;margin-top:5px;">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label style="margin-top:5px;">Upload
+                                                            PVR</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="file" name="pvr" class="form-control input-sm"
+                                                            accept=".pdf,.jpg,.jpeg,.png">
+                                                        <?php if(!empty($doc['pvr'])){ ?>
+                                                        <a href="<?= base_url('uploads/employee_documents/'.$doc['pvr']) ?>"
+                                                            target="_blank">
+                                                            View Uploaded PVR
+                                                        </a>
+                                                        <?php } ?>
+                                                        <input type="hidden" name="old_pvr"
+                                                            value="<?= $doc['pvr'] ?? '' ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
 
 
