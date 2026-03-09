@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 class Lead extends CI_Controller {
 
@@ -359,103 +360,116 @@ class Lead extends CI_Controller {
     	    $this->session->set_flashdata('success', 'Source deleted successfully !!');
     	    redirect("lead/add_source");
 	}
-
-function add_lead()
+public function add_lead()
 {
-    $data = array();
+    $data = [];
     $data['accessar'] = json_decode($this->session->userdata('access_menus'));
 
     if ($this->input->post('submitBtn')) {
 
-        $this->form_validation->set_rules('source', 'Source', 'trim|required');
+        $this->form_validation->set_rules('source', 'Portfolio', 'required');
 
         if ($this->form_validation->run()) {
 
-            if (!empty($_FILES['upload_file']['tmp_name'])) {
+            if (!empty($_FILES['upload_file']['name'])) {
+
+                $file = $_FILES['upload_file']['tmp_name'];
+                $extension = pathinfo($_FILES['upload_file']['name'], PATHINFO_EXTENSION);
+
+                if (!in_array($extension, ['xls', 'xlsx'])) {
+                    $this->session->set_flashdata('error', 'Only Excel files allowed');
+                    redirect("lead/add_lead");
+                }
 
                 try {
 
-                    $file = $_FILES['upload_file']['tmp_name'];
-
                     $spreadsheet = IOFactory::load($file);
-                    $sheet = $spreadsheet->getActiveSheet()->toArray();
+                    $sheetData = $spreadsheet->getActiveSheet()->toArray();
 
-                    foreach ($sheet as $index => $row) {
+                    $portfolio_id = $this->input->post('source');
+
+                    $insertData = [];
+
+                    foreach ($sheetData as $index => $row) {
 
                         if ($index == 0) continue;
 
-                        $data_list = array(
+                        $insertData[] = [
 
-                            'allocation_month' => !empty($row[0]) ? $row[0] : NULL,
-                            'portfolio'        => !empty($row[1]) ? $row[1] : NULL,
-                            'product'          => !empty($row[2]) ? $row[2] : NULL,
-                            'loan_number'      => !empty($row[3]) ? $row[3] : NULL,
-                            'customer_name'    => !empty($row[4]) ? $row[4] : NULL,
-                            'customer_mobile'  => !empty($row[5]) ? $row[5] : NULL,
+                            'portfolio_id' => $portfolio_id,
 
-                            'od_pos'           => !empty($row[6]) ? $row[6] : NULL,
-                            'cycle_dt'         => !empty($row[7]) ? $row[7] : NULL,
-                            'emi'              => !empty($row[8]) ? $row[8] : NULL,
+                            'allocation_month' => $row[0] !== '' ? $row[0] : NULL,
+                            'portfolio'        => $row[1] !== '' ? $row[1] : NULL,
+                            'product'          => $row[2] !== '' ? $row[2] : NULL,
+                            'loan_number'      => $row[3] !== '' ? $row[3] : NULL,
+                            'customer_name'    => $row[4] !== '' ? $row[4] : NULL,
+                            'customer_mobile'  => $row[5] !== '' ? $row[5] : NULL,
 
-                            'bkt_category'     => !empty($row[9]) ? $row[9] : NULL,
-                            'bkt'              => !empty($row[10]) ? $row[10] : NULL,
-                            'tos'              => !empty($row[11]) ? $row[11] : NULL,
-                            'dpd'              => !empty($row[12]) ? $row[12] : NULL,
+                            'od_pos'           => $row[6] !== '' ? $row[6] : NULL,
+                            'cycle_dt'         => $row[7] !== '' ? $row[7] : NULL,
+                            'emi'              => $row[8] !== '' ? $row[8] : NULL,
 
-                            'tenure'           => !empty($row[13]) ? $row[13] : NULL,
-                            'tenure_paid'      => !empty($row[14]) ? $row[14] : NULL,
+                            'bkt_category'     => $row[9] !== '' ? $row[9] : NULL,
+                            'bkt'              => $row[10] !== '' ? $row[10] : NULL,
+                            'tos'              => $row[11] !== '' ? $row[11] : NULL,
+                            'dpd'              => $row[12] !== '' ? $row[12] : NULL,
 
-                            'pool_type'        => !empty($row[15]) ? $row[15] : NULL,
+                            'tenure'           => $row[13] !== '' ? $row[13] : NULL,
+                            'tenure_paid'      => $row[14] !== '' ? $row[14] : NULL,
 
-                            'tl_name'          => !empty($row[16]) ? $row[16] : NULL,
-                            'tc_name'          => !empty($row[17]) ? $row[17] : NULL,
-                            'fos_name'         => !empty($row[18]) ? $row[18] : NULL,
-                            'fos_number'       => !empty($row[19]) ? $row[19] : NULL,
+                            'pool_type'        => $row[15] !== '' ? $row[15] : NULL,
 
-                            'location'         => !empty($row[20]) ? $row[20] : NULL,
-                            'residence_address'=> !empty($row[21]) ? $row[21] : NULL,
-                            'residence_zip_code'=> !empty($row[22]) ? $row[22] : NULL,
-                            'residence_landline_phone'=> !empty($row[23]) ? $row[23] : NULL,
+                            'tl_name'          => $row[16] !== '' ? $row[16] : NULL,
+                            'tc_name'          => $row[17] !== '' ? $row[17] : NULL,
+                            'fos_name'         => $row[18] !== '' ? $row[18] : NULL,
+                            'fos_number'       => $row[19] !== '' ? $row[19] : NULL,
 
-                            'customer_office_name'=> !empty($row[24]) ? $row[24] : NULL,
-                            'office_address'      => !empty($row[25]) ? $row[25] : NULL,
-                            'office_zip_code'     => !empty($row[26]) ? $row[26] : NULL,
+                            'location'         => $row[20] !== '' ? $row[20] : NULL,
+                            'residence_address'=> $row[21] !== '' ? $row[21] : NULL,
+                            'residence_zip_code'=> $row[22] !== '' ? $row[22] : NULL,
+                            'residence_landline_phone'=> $row[23] !== '' ? $row[23] : NULL,
 
-                            'reference_name'   => !empty($row[27]) ? $row[27] : NULL,
-                            'reference_number' => !empty($row[28]) ? $row[28] : NULL,
+                            'customer_office_name'=> $row[24] !== '' ? $row[24] : NULL,
+                            'office_address'      => $row[25] !== '' ? $row[25] : NULL,
+                            'office_zip_code'     => $row[26] !== '' ? $row[26] : NULL,
 
-                            'asset_model'      => !empty($row[29]) ? $row[29] : NULL,
-                            'registration_no'  => !empty($row[30]) ? $row[30] : NULL,
-                            'engine_no'        => !empty($row[31]) ? $row[31] : NULL,
+                            'reference_name'   => $row[27] !== '' ? $row[27] : NULL,
+                            'reference_number' => $row[28] !== '' ? $row[28] : NULL,
 
-                            'disbursal_date'   => !empty($row[32]) ? $row[32] : NULL,
-                            'emi_start_date'   => !empty($row[33]) ? $row[33] : NULL,
-                            'emi_end_date'     => !empty($row[34]) ? $row[34] : NULL,
+                            'asset_model'      => $row[29] !== '' ? $row[29] : NULL,
+                            'registration_no'  => $row[30] !== '' ? $row[30] : NULL,
+                            'engine_no'        => $row[31] !== '' ? $row[31] : NULL,
 
-                            'legal_status'     => !empty($row[35]) ? $row[35] : NULL,
-                            'short_code'       => !empty($row[36]) ? $row[36] : NULL,
+                            'disbursal_date'   => $row[32] !== '' ? date('Y-m-d', strtotime($row[32])) : NULL,
+                            'emi_start_date'   => $row[33] !== '' ? date('Y-m-d', strtotime($row[33])) : NULL,
+                            'emi_end_date'     => $row[34] !== '' ? date('Y-m-d', strtotime($row[34])) : NULL,
 
-                            'detail_calling_feedback' => !empty($row[37]) ? $row[37] : NULL,
-                            'detail_fos_feedback'     => !empty($row[38]) ? $row[38] : NULL,
+                            'legal_status'     => $row[35] !== '' ? $row[35] : NULL,
+                            'short_code'       => $row[36] !== '' ? $row[36] : NULL,
 
-                            'ptp_amount'       => !empty($row[39]) ? $row[39] : NULL,
-                            'ptp_date'         => !empty($row[40]) ? $row[40] : NULL,
+                            'detail_calling_feedback' => $row[37] !== '' ? $row[37] : NULL,
+                            'detail_fos_feedback'     => $row[38] !== '' ? $row[38] : NULL,
 
-                            'paid_amount'      => !empty($row[41]) ? $row[41] : NULL,
-                            'paid_date'        => !empty($row[42]) ? $row[42] : NULL,
+                            'ptp_amount'       => $row[39] !== '' ? $row[39] : NULL,
+                            'ptp_date'         => $row[40] !== '' ? date('Y-m-d', strtotime($row[40])) : NULL,
 
-                            'fos_payout_grid'  => !empty($row[43]) ? $row[43] : NULL,
-                            'fos_payout_percent'=> !empty($row[44]) ? $row[44] : NULL,
-                            'fos_payout_amount'=> !empty($row[45]) ? $row[45] : NULL,
+                            'paid_amount'      => $row[41] !== '' ? $row[41] : NULL,
+                            'paid_date'        => $row[42] !== '' ? date('Y-m-d', strtotime($row[42])) : NULL,
 
-                            'actual_payout_grid'=> !empty($row[46]) ? $row[46] : NULL,
-                            'actual_payout_percent'=> !empty($row[47]) ? $row[47] : NULL,
-                            'booster_payout'   => !empty($row[48]) ? $row[48] : NULL,
+                            'fos_payout_grid'  => $row[43] !== '' ? $row[43] : NULL,
+                            'fos_payout_percent'=> $row[44] !== '' ? $row[44] : NULL,
+                            'fos_payout_amount'=> $row[45] !== '' ? $row[45] : NULL,
 
-                            'actual_payout_amount'=> !empty($row[49]) ? $row[49] : NULL
-                        );
+                            'actual_payout_grid'=> $row[46] !== '' ? $row[46] : NULL,
+                            'actual_payout_percent'=> $row[47] !== '' ? $row[47] : NULL,
+                            'booster_payout'   => $row[48] !== '' ? $row[48] : NULL,
 
-                        $this->db->insert("lead_enquiry", $data_list);
+                            'actual_payout_amount'=> $row[49] !== '' ? $row[49] : NULL
+                        ];
+                    }
+
+                    if (!empty($insertData)) {
+                        $this->db->insert_batch('lead_enquiry', $insertData);
                     }
 
                     $this->session->set_flashdata('success', 'Data imported successfully');
@@ -472,14 +486,10 @@ function add_lead()
                 $this->session->set_flashdata('error', 'Please upload a file');
                 redirect("lead/add_lead");
             }
-
-        } else {
-
-            $this->session->set_flashdata('error', validation_errors());
         }
     }
 
-    $data['records'] = $this->Common_Model->FetchData("portfolio", "*", "ORDER BY id");
+    $data['records'] = $this->Common_Model->FetchData("portfolio","*","1=1 ORDER BY id");
     $data['mainmenu'] = 'lead';
     $data['submenu'] = 'add_lead';
 

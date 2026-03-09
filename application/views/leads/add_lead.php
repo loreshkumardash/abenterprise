@@ -63,7 +63,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <option value="">--Select--</option>
                             <?php if ($records) {
                               for ($i = 0; $i < count($records); $i++) { ?>
-                                <option value="<?= $records[$i]['id']; ?>"><?= $records[$i]['source']; ?></option>
+                                <option value="<?= $records[$i]['id']; ?>"><?= $records[$i]['name']; ?></option>
                             <?php }
                             } ?>
                           </select>
