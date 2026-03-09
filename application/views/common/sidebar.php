@@ -105,11 +105,11 @@
                             <ul class="treeview-menu">
 
                                 <?php if (in_array('ledgeradd', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
-                                <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'add_ledger' ? 'active' : '' ?>"><a href="<?php echo site_url("masters/add_ledger"); ?>"><i class="fa fa-circle-o"></i> Add New</a></li>
+                                <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'add_ledger' ? 'active' : '' ?>"><a href="<?php echo site_url("masters/add_ledger"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Add New</a></li>
                                 <?php } ?>
 
                                 <?php if (in_array('ledgerview', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
-                                <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'list_ledger' ? 'active' : '' ?>"><a href="<?php echo site_url("masters/list_ledger"); ?>"><i class="fa fa-circle-o"></i> List Ledger</a></li>
+                                <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'list_ledger' ? 'active' : '' ?>"><a href="<?php echo site_url("masters/list_ledger"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> List Ledger</a></li>
                                 <?php } ?>
 
                             </ul>
@@ -224,44 +224,44 @@
                     <ul class="treeview-menu">
                         <?php if (in_array('empadd', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'addemployee' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("employee/addemployee"); ?>"><i class="fa fa-circle-o"></i> Add
+                                    href="<?php echo site_url("employee/addemployee"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Add
                                     Employee</a></li>
                         <?php } ?>
 
                         <?php if (in_array('empview', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'listemployee' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("employee"); ?>"><i class="fa fa-circle-o"></i> List Employee</a>
+                                    href="<?php echo site_url("employee"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> List Employee</a>
                             </li>
                         <?php } ?>
 
                         <?php if (in_array('empdata', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'empdata' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("employee/empdata"); ?>"><i class="fa fa-circle-o"></i>Employee
+                                    href="<?php echo site_url("employee/empdata"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Employee
                                     Data</a></li>
                         <?php } ?>
 
                         <?php if (in_array('leave', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'pendingleaves' ? 'active' : '' ?>">
-                                <a href="<?php echo site_url("employee/pendingleaves"); ?>"><i class="fa fa-circle-o"></i> Leave
+                                <a href="<?php echo site_url("employee/pendingleaves"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Leave
                                     Request</a>
                             </li>
                         <?php } ?>
 
                         <?php if (in_array('legalAction', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'legalAction' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("employee/legalAction"); ?>"><i class="fa fa-circle-o"></i>Legal
+                                    href="<?php echo site_url("employee/legalAction"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Legal
                                     Actions</a></li>
                         <?php } ?>
 
                         <?php if (in_array('matrix', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'matrix' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("payout/matrix"); ?>"><i class="fa fa-circle-o"></i>Agency Payout</a>
+                                    href="<?php echo site_url("payout/matrix"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Agency Payout</a>
                             </li>
                         <?php } ?>
 
                         <?php if (in_array('calculate', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'calculate' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("payout"); ?>"><i class="fa fa-circle-o"></i>Employee Payout</a>
+                                    href="<?php echo site_url("payout"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Employee Payout</a>
                             </li>
                         <?php } ?>
                     </ul>
@@ -279,30 +279,30 @@
                     <ul class="treeview-menu">
                         <?php if (in_array('menuaccessadd', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'add_menu_access' ? 'active' : '' ?>">
-                                <a href="<?php echo site_url("users/add_menu_access"); ?>"><i class="fa fa-circle-o"></i> Add
+                                <a href="<?php echo site_url("users/add_menu_access"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Add
                                     Menu Access</a>
                             </li>
                         <?php } ?>
                         <?php if (in_array('menuaccessview', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'list_menu_access' ? 'active' : '' ?>">
-                                <a href="<?php echo site_url("users/list_menu_access"); ?>"><i class="fa fa-circle-o"></i> List
+                                <a href="<?php echo site_url("users/list_menu_access"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> List
                                     Menu Access</a>
                             </li>
                         <?php } ?>
                         <?php if (in_array('usersadd', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'adduser' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("users/adduser"); ?>"><i class="fa fa-circle-o"></i> Add User</a>
+                                    href="<?php echo site_url("users/adduser"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Add User</a>
                             </li>
                         <?php } ?>
                         <?php if (in_array('usersview', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'listuser' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("users/listuser"); ?>"><i class="fa fa-circle-o"></i> List User</a>
+                                    href="<?php echo site_url("users/listuser"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> List User</a>
                             </li>
                         <?php } ?>
 
                         <?php if (in_array('employeeassign', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'trackingaccess' ? 'active' : '' ?>">
-                                <a href="<?php echo site_url("users/trackingaccess"); ?>"><i class="fa fa-circle-o"></i> Employee
+                                <a href="<?php echo site_url("users/trackingaccess"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Employee
                                     Assign</a>
                             </li>
                         <?php } ?>
@@ -315,7 +315,7 @@
 
                 <li class="<?php echo isset($mainmenu) && $mainmenu == 'lead' ? 'active' : '' ?> treeview">
                     <a href="javascript:;">
-                        <i class="fa fa-file-pdf-o"></i> <span>Lead</span>
+                        <i class="fa-regular fa-file-pdf"></i> <span>Lead</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -325,48 +325,48 @@
 
                         <li class="<?php echo (isset($submenu) && $submenu == 'add_source') ? ' active' : ''; ?>">
                             <a href="<?php echo site_url("lead/add_source"); ?>" class="nav-link">
-                                <i class="fa fa-circle-o"></i>Add Source
+                                <i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Add Source
                             </a>
                         </li>
 
                         <li class="<?php echo (isset($submenu) && $submenu == 'new_lead') ? 'active' : ''; ?>">
                             <a href="<?php echo site_url("lead/new_lead"); ?>">
-                                <i class="fa fa-circle-o"></i>Add Single Lead</a>
+                                <i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Add Single Lead</a>
                         </li>
 
                         <li class="<?php echo (isset($submenu) && $submenu == 'add_lead') ? 'active' : ''; ?>">
                             <a href="<?php echo site_url('lead/add_lead'); ?>">
-                                <i class="fa fa-circle-o"></i>Add Multiple Lead
+                                <i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Add Multiple Lead
                             </a>
                         </li>
 
                         <li class="<?php echo (isset($submenu) && $submenu == 'lead_assignee') ? 'active' : ''; ?>">
                             <a href="<?php echo site_url('lead/lead_assignee'); ?>">
-                                <i class="fa fa-circle-o"></i>Lead Assignees
+                                <i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Lead Assignees
                             </a>
                         </li>
 
                         <li class="<?php echo (isset($submenu) && $submenu == 'listlead') ? 'active' : ''; ?>">
                             <a href="<?php echo site_url('lead'); ?>">
-                                <i class="fa fa-circle-o"></i>List Lead
+                                <i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>List Lead
                             </a>
                         </li>
 
                         <!--  <li class="<?php echo (isset($submenu) && $submenu == 'activity') ? 'active' : ''; ?>">
                             <a href="<?php echo site_url('lead/counselor_activity'); ?>">
-                                <i class="fa fa-circle-o"></i>Counselor Activity
+                                <i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Counselor Activity
                             </a>
                         </li> -->
 
                         <!-- <li class="<?php echo (isset($submenu) && $submenu == 'lead_conversion') ? 'active' : ''; ?>">
                             <a href="<?php echo site_url('lead/lead_conversion'); ?>">
-                                <i class="fa fa-circle-o"></i>Lead Conversion
+                                <i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Lead Conversion
                             </a>
                         </li>
 
                         <li class="<?php echo (isset($submenu) && $submenu == 'leadcancel') ? 'active' : ''; ?>">
                             <a href="<?php echo site_url('lead/leadcancel'); ?>">
-                                <i class="fa fa-circle-o"></i>Lead Cancel
+                                <i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Lead Cancel
                             </a>
                         </li> -->
 
@@ -396,25 +396,25 @@
 
                         <li class="nav-item">
                             <a href="<?php echo site_url("lead/new_lead"); ?>"
-                                class="nav-link <?= $submenu == 'new_lead' ? 'active' : '' ?>"><i class="fa fa-circle-o"></i>Add Lead</a>
+                                class="nav-link <?= $submenu == 'new_lead' ? 'active' : '' ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Add Lead</a>
                         </li>
 
                         <li class="nav-item">
                             <a href="<?php echo site_url("lead/add_lead"); ?>"
-                                class="nav-link <?= $submenu == 'multi_lead' ? 'active' : '' ?>"><i class="fa fa-circle-o"></i>Add Multiple
+                                class="nav-link <?= $submenu == 'multi_lead' ? 'active' : '' ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Add Multiple
                                 Lead</a>
                         </li>
 
                         <li class="nav-item">
                             <a href="<?php echo site_url("emp_leads"); ?>"
-                                class="nav-link <?= $submenu == 'listleads' ? 'active' : '' ?>"><i class="fa fa-circle-o"></i>List Lead</a>
+                                class="nav-link <?= $submenu == 'listleads' ? 'active' : '' ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>List Lead</a>
                         </li>
 
                         <!--  <li class="nav-item">
-                            <a href="<?php echo site_url("lead/leadreport"); ?>" class="nav-link <?= $submenu == 'leadreport' ? 'active' : '' ?>"><i class="fa fa-circle-o"></i>Lead Report</a>
+                            <a href="<?php echo site_url("lead/leadreport"); ?>" class="nav-link <?= $submenu == 'leadreport' ? 'active' : '' ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Lead Report</a>
                         </li> -->
                         <!-- <li class="nav-item">
-                            <a href="<?php echo site_url("lead/leadgraph"); ?>" class="nav-link <?= $submenu == 'leadgraph' ? 'active' : '' ?>"><i class="fa fa-circle-o"></i>Lead graph Report</a>
+                            <a href="<?php echo site_url("lead/leadgraph"); ?>" class="nav-link <?= $submenu == 'leadgraph' ? 'active' : '' ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Lead graph Report</a>
                         </li> -->
 
                     </ul>
@@ -435,26 +435,26 @@
 
                         <?php if (in_array('leadint', $accessar) || $this->session->userdata('usertype') == 'Employee') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'leadinterest' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("leadreport/leadinterest"); ?>"><i class="fa fa-circle-o"></i>
+                                    href="<?php echo site_url("leadreport/leadinterest"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>
                                     Interested</a></li>
                         <?php } ?>
 
                         <?php if (in_array('leadnotint', $accessar) || $this->session->userdata('usertype') == 'Employee') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'leadnotinterest' ? 'active' : '' ?>">
-                                <a href="<?php echo site_url("leadreport/leadnotinterest"); ?>"><i class="fa fa-circle-o"></i>
+                                <a href="<?php echo site_url("leadreport/leadnotinterest"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>
                                     Not interested</a>
                             </li>
                         <?php } ?>
 
                         <?php if (in_array('callback', $accessar) || $this->session->userdata('usertype') == 'Employee') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'callback' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("leadreport/callback"); ?>"><i class="fa fa-circle-o"></i> Call
+                                    href="<?php echo site_url("leadreport/callback"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Call
                                     Backs</a></li>
                         <?php } ?>
 
                         <?php if (in_array('calllog', $accessar) || $this->session->userdata('usertype') == 'Employee') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'calllog' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("leadreport/calllog"); ?>"><i class="fa fa-circle-o"></i> Call
+                                    href="<?php echo site_url("leadreport/calllog"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Call
                                     Logs</a></li>
                         <?php } ?>
 
@@ -482,7 +482,7 @@
 
                         <?php if (in_array('leadint', $accessar) || $this->session->userdata('usertype') == 'Employee') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'listproperty' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("property/listproperty"); ?>"><i class="fa fa-circle-o"></i>
+                                    href="<?php echo site_url("property/listproperty"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>
                                     Property Details</a></li>
                         <?php } ?>
 
@@ -503,7 +503,7 @@
                     <ul class="treeview-menu">
                         <?php if (in_array('cpreg', $accessar) || $this->session->userdata('usertype') == 'Channel Partner') { ?>
                             <li class="<?= isset($activesubmenu) && $activesubmenu == 'registration' ? 'active' : '' ?>">
-                                <a href="<?= site_url("channelpartner/registration"); ?>"><i class="fa fa-circle-o"></i>
+                                <a href="<?= site_url("channelpartner/registration"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>
                                     Registration</a>
                             </li>
                         <?php } ?>
@@ -512,7 +512,7 @@
 
                         <?php if (in_array('cpstatus', $accessar) || $this->session->userdata('usertype') == 'Channel Partner') { ?>
                             <li class="<?= isset($activesubmenu) && $activesubmenu == 'approvestatus' ? 'active' : '' ?>">
-                                <a href="<?= site_url("channelpartner/approvestatus"); ?>"><i class="fa fa-circle-o"></i>
+                                <a href="<?= site_url("channelpartner/approvestatus"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>
                                     Approval Status</a>
                             </li>
                         <?php } ?>
@@ -534,25 +534,25 @@
 
                         <li class="nav-item">
                             <a href="<?php echo site_url("lead/new_lead"); ?>"
-                                class="nav-link <?= $submenu == 'new_lead' ? 'active' : '' ?>"><i class="fa fa-circle-o"></i>Add Lead</a>
+                                class="nav-link <?= $submenu == 'new_lead' ? 'active' : '' ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Add Lead</a>
                         </li>
 
                         <li class="nav-item">
                             <a href="<?php echo site_url("lead/add_lead"); ?>"
-                                class="nav-link <?= $submenu == 'multi_lead' ? 'active' : '' ?>"><i class="fa fa-circle-o"></i>Add Multiple
+                                class="nav-link <?= $submenu == 'multi_lead' ? 'active' : '' ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Add Multiple
                                 Lead</a>
                         </li>
 
                         <li class="nav-item">
                             <a href="<?php echo site_url("emp_leads"); ?>"
-                                class="nav-link <?= $submenu == 'listleads' ? 'active' : '' ?>"><i class="fa fa-circle-o"></i>List Lead</a>
+                                class="nav-link <?= $submenu == 'listleads' ? 'active' : '' ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>List Lead</a>
                         </li>
 
                         <!--  <li class="nav-item">
-                            <a href="<?php echo site_url("lead/leadreport"); ?>" class="nav-link <?= $submenu == 'leadreport' ? 'active' : '' ?>"><i class="fa fa-circle-o"></i>Lead Report</a>
+                            <a href="<?php echo site_url("lead/leadreport"); ?>" class="nav-link <?= $submenu == 'leadreport' ? 'active' : '' ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Lead Report</a>
                         </li> -->
                         <!-- <li class="nav-item">
-                            <a href="<?php echo site_url("lead/leadgraph"); ?>" class="nav-link <?= $submenu == 'leadgraph' ? 'active' : '' ?>"><i class="fa fa-circle-o"></i>Lead graph Report</a>
+                            <a href="<?php echo site_url("lead/leadgraph"); ?>" class="nav-link <?= $submenu == 'leadgraph' ? 'active' : '' ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Lead graph Report</a>
                         </li> -->
 
                     </ul>
@@ -577,26 +577,26 @@
 
                         <?php if (in_array('leadint', $accessar) || $this->session->userdata('usertype') == 'Channel Partner') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'leadinterest' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("leadreport/leadinterest"); ?>"><i class="fa fa-circle-o"></i>
+                                    href="<?php echo site_url("leadreport/leadinterest"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>
                                     Interested</a></li>
                         <?php } ?>
 
                         <?php if (in_array('leadnotint', $accessar) || $this->session->userdata('usertype') == 'Channel Partner') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'leadnotinterest' ? 'active' : '' ?>">
-                                <a href="<?php echo site_url("leadreport/leadnotinterest"); ?>"><i class="fa fa-circle-o"></i>
+                                <a href="<?php echo site_url("leadreport/leadnotinterest"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>
                                     Not interested</a>
                             </li>
                         <?php } ?>
 
                         <?php if (in_array('callback', $accessar) || $this->session->userdata('usertype') == 'Channel Partner') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'callback' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("leadreport/callback"); ?>"><i class="fa fa-circle-o"></i> Call
+                                    href="<?php echo site_url("leadreport/callback"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Call
                                     Backs</a></li>
                         <?php } ?>
 
                         <?php if (in_array('calllog', $accessar) || $this->session->userdata('usertype') == 'Channel Partner') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'calllog' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("leadreport/calllog"); ?>"><i class="fa fa-circle-o"></i> Call
+                                    href="<?php echo site_url("leadreport/calllog"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Call
                                     Logs</a></li>
                         <?php } ?>
 
@@ -620,14 +620,14 @@
                     <ul class="treeview-menu">
                         <?php if (in_array('propadd', $accessar) || $this->session->userdata('usertype') == 'Channel Partner') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'addproperty' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("property/addproperty"); ?>"><i class="fa fa-circle-o"></i> Add
+                                    href="<?php echo site_url("property/addproperty"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i> Add
                                     Property</a></li>
                         <?php } ?>
 
 
                         <?php if (in_array('leadint', $accessar) || $this->session->userdata('usertype') == 'Channel Partner') { ?>
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'listproperty' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("property/listproperty"); ?>"><i class="fa fa-circle-o"></i>
+                                    href="<?php echo site_url("property/listproperty"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>
                                     Property Details</a></li>
                         <?php } ?>
 
