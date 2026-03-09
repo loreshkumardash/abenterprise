@@ -360,89 +360,131 @@ class Lead extends CI_Controller {
     	    redirect("lead/add_source");
 	}
 
-    function add_lead(){
-		$data = array();
-		$data['accessar'] = json_decode($this->session->userdata('access_menus'));
+function add_lead()
+{
+    $data = array();
+    $data['accessar'] = json_decode($this->session->userdata('access_menus'));
 
-		if($this->input->post('submitBtn')){
-			
-					$this->form_validation->set_rules('source', 'Source', 'trim|required');
-			$this->form_validation->set_error_delimiters('<p class="has-error"><label class="control-label">', '</label></p>');
+    if ($this->input->post('submitBtn')) {
 
-			if($this->form_validation->run()){
-				
+        $this->form_validation->set_rules('source', 'Source', 'trim|required');
 
-				if (isset($_FILES['upload_file'])) {
-				
-						try {
+        if ($this->form_validation->run()) {
 
-							$file = $_FILES['upload_file']['tmp_name'];
+            if (!empty($_FILES['upload_file']['tmp_name'])) {
 
-				            
+                try {
 
-				            // Validate file type
-				            $fileType = \PhpOffice\PhpSpreadsheet\IOFactory::identify($file);
-				            if (!in_array($fileType, ['Xlsx', 'Xls'])) {
-				                die(json_encode(['status' => 'error', 'message' => 'Invalid file format']));
-				            }
+                    $file = $_FILES['upload_file']['tmp_name'];
 
-							$spreadsheet = IOFactory::load($file);
-				            $sheet = $spreadsheet->getActiveSheet();
-				            $data = $sheet->toArray();
-				            
-				            $sl = 1;
-				            $html = '';
+                    $spreadsheet = IOFactory::load($file);
+                    $sheet = $spreadsheet->getActiveSheet()->toArray();
 
-				            foreach ($data as $index => $row) {
-				                if ($index === 0) continue;
-									$count = $count++;
-									$data_list = array(
-										'customer_code' => trim(addslashes($row[1] ?? '')),
-										'name'          => trim(addslashes($row[2] ?? '')),
-										'mobile'        => trim(addslashes($row[3] ?? '')),
-										'wp_no'     => trim(addslashes($row[4] ? $row[4] : $row[3])),
-										'location'        => trim(addslashes($row[5] ?? '')),
-										'specification'        => trim(addslashes($row[6] ?? '')),
-										'city'          => trim(addslashes($row[7] ?? '')),
-										'state'         => trim(addslashes($row[8] ?? '')),
-										'gender'        => trim(addslashes($row[9] ?? '')),
-										
-										'enquiry_date'  => ($row[10] ? date('Y-m-d',strtotime($row[10])) : date('Y-m-d')),
-										
-										'email'         => trim(addslashes($row[11] ?? '')),
-										
-										'budget'         => trim(addslashes($row[12] ?? '')),
+                    foreach ($sheet as $index => $row) {
 
-										'enquiry_remark' => trim(addslashes($row[13] ?? '')),
+                        if ($index == 0) continue;
 
-										'source'  		=> trim(addslashes($this->input->post('source')))
-									);
-									$this->Common_Model->dbinsertid("lead_enquiry", $data_list);
-								}
-							
+                        $data_list = array(
 
-							$this->session->set_flashdata('success', ' Record has been inserted successfully !!');
-							redirect("lead/add_lead");
-						} catch (Exception $e) {
-							$this->session->set_flashdata('error', $e->getMessage());
-							redirect("lead/add_lead");
-				            
-				        }
-					}else{
-						$this->session->set_flashdata('error', 'No file received!');
-							redirect("lead/add_lead");
-					}
-				
-			} else {
-				$this->session->set_flashdata('error', validation_errors());
-			}
-		}
+                            'allocation_month' => !empty($row[0]) ? $row[0] : NULL,
+                            'portfolio'        => !empty($row[1]) ? $row[1] : NULL,
+                            'product'          => !empty($row[2]) ? $row[2] : NULL,
+                            'loan_number'      => !empty($row[3]) ? $row[3] : NULL,
+                            'customer_name'    => !empty($row[4]) ? $row[4] : NULL,
+                            'customer_mobile'  => !empty($row[5]) ? $row[5] : NULL,
 
-		$data['records'] = $this->Common_Model->FetchData("erp_source", "*", "status='1' ORDER BY id");
-		$data['mainmenu'] = 'lead';
-		$data['submenu'] = 'add_lead';
-		$this->load->view('leads/add_lead', $data);
-	}
+                            'od_pos'           => !empty($row[6]) ? $row[6] : NULL,
+                            'cycle_dt'         => !empty($row[7]) ? $row[7] : NULL,
+                            'emi'              => !empty($row[8]) ? $row[8] : NULL,
+
+                            'bkt_category'     => !empty($row[9]) ? $row[9] : NULL,
+                            'bkt'              => !empty($row[10]) ? $row[10] : NULL,
+                            'tos'              => !empty($row[11]) ? $row[11] : NULL,
+                            'dpd'              => !empty($row[12]) ? $row[12] : NULL,
+
+                            'tenure'           => !empty($row[13]) ? $row[13] : NULL,
+                            'tenure_paid'      => !empty($row[14]) ? $row[14] : NULL,
+
+                            'pool_type'        => !empty($row[15]) ? $row[15] : NULL,
+
+                            'tl_name'          => !empty($row[16]) ? $row[16] : NULL,
+                            'tc_name'          => !empty($row[17]) ? $row[17] : NULL,
+                            'fos_name'         => !empty($row[18]) ? $row[18] : NULL,
+                            'fos_number'       => !empty($row[19]) ? $row[19] : NULL,
+
+                            'location'         => !empty($row[20]) ? $row[20] : NULL,
+                            'residence_address'=> !empty($row[21]) ? $row[21] : NULL,
+                            'residence_zip_code'=> !empty($row[22]) ? $row[22] : NULL,
+                            'residence_landline_phone'=> !empty($row[23]) ? $row[23] : NULL,
+
+                            'customer_office_name'=> !empty($row[24]) ? $row[24] : NULL,
+                            'office_address'      => !empty($row[25]) ? $row[25] : NULL,
+                            'office_zip_code'     => !empty($row[26]) ? $row[26] : NULL,
+
+                            'reference_name'   => !empty($row[27]) ? $row[27] : NULL,
+                            'reference_number' => !empty($row[28]) ? $row[28] : NULL,
+
+                            'asset_model'      => !empty($row[29]) ? $row[29] : NULL,
+                            'registration_no'  => !empty($row[30]) ? $row[30] : NULL,
+                            'engine_no'        => !empty($row[31]) ? $row[31] : NULL,
+
+                            'disbursal_date'   => !empty($row[32]) ? $row[32] : NULL,
+                            'emi_start_date'   => !empty($row[33]) ? $row[33] : NULL,
+                            'emi_end_date'     => !empty($row[34]) ? $row[34] : NULL,
+
+                            'legal_status'     => !empty($row[35]) ? $row[35] : NULL,
+                            'short_code'       => !empty($row[36]) ? $row[36] : NULL,
+
+                            'detail_calling_feedback' => !empty($row[37]) ? $row[37] : NULL,
+                            'detail_fos_feedback'     => !empty($row[38]) ? $row[38] : NULL,
+
+                            'ptp_amount'       => !empty($row[39]) ? $row[39] : NULL,
+                            'ptp_date'         => !empty($row[40]) ? $row[40] : NULL,
+
+                            'paid_amount'      => !empty($row[41]) ? $row[41] : NULL,
+                            'paid_date'        => !empty($row[42]) ? $row[42] : NULL,
+
+                            'fos_payout_grid'  => !empty($row[43]) ? $row[43] : NULL,
+                            'fos_payout_percent'=> !empty($row[44]) ? $row[44] : NULL,
+                            'fos_payout_amount'=> !empty($row[45]) ? $row[45] : NULL,
+
+                            'actual_payout_grid'=> !empty($row[46]) ? $row[46] : NULL,
+                            'actual_payout_percent'=> !empty($row[47]) ? $row[47] : NULL,
+                            'booster_payout'   => !empty($row[48]) ? $row[48] : NULL,
+
+                            'actual_payout_amount'=> !empty($row[49]) ? $row[49] : NULL
+                        );
+
+                        $this->db->insert("lead_enquiry", $data_list);
+                    }
+
+                    $this->session->set_flashdata('success', 'Data imported successfully');
+                    redirect("lead/add_lead");
+
+                } catch (Exception $e) {
+
+                    $this->session->set_flashdata('error', $e->getMessage());
+                    redirect("lead/add_lead");
+                }
+
+            } else {
+
+                $this->session->set_flashdata('error', 'Please upload a file');
+                redirect("lead/add_lead");
+            }
+
+        } else {
+
+            $this->session->set_flashdata('error', validation_errors());
+        }
+    }
+
+    $data['records'] = $this->Common_Model->FetchData("portfolio", "*", "ORDER BY id");
+    $data['mainmenu'] = 'lead';
+    $data['submenu'] = 'add_lead';
+
+    $this->load->view('leads/add_lead', $data);
+}
 
 	function new_lead(){
 		$user_details = $this->session->userdata();
