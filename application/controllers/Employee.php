@@ -4,7 +4,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
+/**
+ * @property CI_Loader $load
+ * @property CI_Session $session
+ * @property CI_Input $input
+ * @property CI_DB_query_builder $db
+ * @property CI_Form_validation $form_validation
+ * @property Common_Model $Common_Model
+ * @property Paginator $paginator
+ */
+
 class Employee extends CI_Controller {
+
+
+public $perPage;
+    public $timestamp;
+		public $present_time;
+		public $present_date;
+		public $upload;
+		public $ajax_pagination;
+		public $security;
 
 	public function __construct(){
 		parent::__construct();
