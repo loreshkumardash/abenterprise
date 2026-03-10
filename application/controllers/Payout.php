@@ -164,4 +164,6 @@ class Payout extends CI_Controller {
         'payout_amount'  => round($payout_amount,2)
     ]);
 }
+
+
 }
