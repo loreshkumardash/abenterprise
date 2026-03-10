@@ -469,7 +469,7 @@ public function add_lead()
                     }
 
                     if (!empty($insertData)) {
-                        $this->db->insert_batch('lead_enquiry', $insertData);
+                        $this->db->insert_batch('portfolio_data', $insertData);
                     }
 
                     $this->session->set_flashdata('success', 'Data imported successfully');
