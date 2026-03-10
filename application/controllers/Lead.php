@@ -504,24 +504,22 @@ public function add_lead()
 		$data=array();
 		if($this->input->post()){
 			$datalist=array(
-				'name' => $this->input->post('name'),
+							'name' => $this->input->post('name'),
 	            'customer_code' => $this->input->post('customer_code'),
-	            
 	            'email' => $this->input->post('email'),
 	            'mobile' => $this->input->post('mobile'),
-
 	            'amobile' => $this->input->post('amobile'),
 	            'wp_no' => $this->input->post('wp_no') ? $this->input->post('wp_no') : $this->input->post('mobile'),
 	            'gender' => $this->input->post('gender'),
 	            'state' => $this->input->post('state'),
 	            'city' => $this->input->post('city'),
-	           'location' => $this->input->post('location'),
-	           'specification' => $this->input->post('specification'),
+	            'location' => $this->input->post('location'),
+	            'specification' => $this->input->post('specification'),
 	            'budget' => $this->input->post('budget'),
 	            'assigned_to' => $emp_id,
 	            'enquiry_date' => date('Y-m-d'),
 	            'enquiry_remark'  => $this->input->post('remark'),
-	             'source' => $this->input->post('source') 
+	            'source' => $this->input->post('source') 
 			);
 			
 			if($this->session->userdata('usertype')=='Admin'){
