@@ -70,6 +70,7 @@
             } else {
                 $accessar = array();
             }
+            
             ?>
             <?php if (in_array('masterview', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
                 <li class="<?php echo isset($activemenu) && $activemenu == 'masters' ? 'active' : '' ?> treeview">
@@ -251,6 +252,12 @@
                             <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'legalAction' ? 'active' : '' ?>"><a
                                     href="<?php echo site_url("employee/legalAction"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Legal
                                     Actions</a></li>
+                        <?php } ?>
+
+                        <?php if (in_array('monthlypayout', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
+                            <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'monthlypayout' ? 'active' : '' ?>"><a
+                                    href="<?php echo site_url("payout/monthlypayout"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Monthly Payout</a>
+                            </li>
                         <?php } ?>
 
                         <?php if (in_array('matrix', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>

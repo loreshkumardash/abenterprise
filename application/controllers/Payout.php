@@ -10,12 +10,13 @@ class Payout extends CI_Controller {
     }
 
     public function index()
-    {
-        $data['portfolios'] = $this->Payout_model->get_portfolios();
-        $this->load->view('payout/calculate',$data);
-        $data['activemenu'] = 'employee';
-        $data['activesubmenu'] = 'calculate';
-    }
+{
+    $data['portfolios'] = $this->Payout_model->get_portfolios();
+    $data['activemenu'] = 'employee';
+    $data['activesubmenu'] = 'calculate';
+
+    $this->load->view('payout/calculate',$data);
+}
 
     public function get_categories()
     {
@@ -65,7 +66,7 @@ class Payout extends CI_Controller {
             if ($payout->payout_type == 'FLAT') {
                 $payout_amount = $payout->payout_value;
             } else {
-                $payout_amount = ($recovery * $payout->payout_value)/100;
+                $payout_amount = ($recovery * $payout->payout_value)/100; 
             }
 
             $fuel_amount = $fuel ? $fuel->fuel_value : 0;
@@ -165,5 +166,12 @@ class Payout extends CI_Controller {
     ]);
 }
 
+public function monthlypayout()
+{
+    $data['activemenu'] = 'employee';
+    $data['activesubmenu'] = 'monthlypayout';
+
+    $this->load->view('payout/monthlypayout', $data);
+}
 
 }

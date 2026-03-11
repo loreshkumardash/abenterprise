@@ -15,7 +15,7 @@
             <h3 class="card-title">Payout Entry</h3>
           </div>
 
-          <form method="post" action="<?php echo site_url('payout/calc_payout'); ?>">
+          <form method="post" action="<?php echo site_url('payout/monthlypayout'); ?>">
 
             <div class="card-body">
 
