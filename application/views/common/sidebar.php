@@ -254,20 +254,14 @@
                                     Actions</a></li>
                         <?php } ?>
 
-                        <?php if (in_array('monthlypayout', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
-                            <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'monthlypayout' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("payout/monthlypayout"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Monthly Payout</a>
+                        <?php if (in_array('agency_payout', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
+                            <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'agency_payout' ? 'active' : '' ?>"><a
+                                    href="<?php echo site_url("payout/agency_payout"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Agency Payout</a>
                             </li>
                         <?php } ?>
 
-                        <?php if (in_array('matrix', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
-                            <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'matrix' ? 'active' : '' ?>"><a
-                                    href="<?php echo site_url("payout/matrix"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Agency Payout</a>
-                            </li>
-                        <?php } ?>
-
-                        <?php if (in_array('calculate', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
-                            <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'calculate' ? 'active' : '' ?>"><a
+                        <?php if (in_array('emp_payout', $accessar) || $this->session->userdata('usertype') == 'Admin') { ?>
+                            <li class="<?php echo isset($activesubmenu) && $activesubmenu == 'emp_payout' ? 'active' : '' ?>"><a
                                     href="<?php echo site_url("payout"); ?>"><i class="fa-regular fa-circle fa-xs" style="margin-right:4px;"></i>Employee Payout</a>
                             </li>
                         <?php } ?>

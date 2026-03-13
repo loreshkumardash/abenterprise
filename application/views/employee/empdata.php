@@ -88,10 +88,10 @@
                                                 Documents
                                             </div>
 
-                                            <div class="btn btn-primary emp-action"
+                                            <!-- <div class="btn btn-primary emp-action"
                                                 data-url="<?php echo site_url('employee/target_kpis/'); ?>">
                                                 Target & KPIs
-                                            </div>
+                                            </div> -->
 
                                             <div class="btn btn-warning emp-action"
                                                 data-url="<?php echo site_url('employee/emp_epf_esi/'); ?>">

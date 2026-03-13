@@ -12,8 +12,8 @@
 	},
 	"require": {
 		"php": ">=5.3.7",
-		"phpoffice/phpspreadsheet": "^1.15",
-		"google/auth": "^1.46"
+		"google/auth": "^1.46",
+		"phpoffice/phpspreadsheet": "^5.5"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

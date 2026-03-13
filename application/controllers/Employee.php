@@ -5537,7 +5537,7 @@ public function downloadProfile($employee_id = null){
 	$data['skills'] = $query->result_array();
 
     
-	$html = $this->load->view('employee/downloadProfile', $data, TRUE);
+		$html = $this->load->view('employee/downloadProfile', $data, TRUE);
     $this->load->library('pdf');
     $pdf = new pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
     $pdf->SetCreator(PDF_CREATOR);
@@ -5550,7 +5550,7 @@ public function downloadProfile($employee_id = null){
     $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
     $pdf->setPrintHeader(true);
     $pdf->SetMargins(15, 45, 15);  
-	$pdf->SetAutoPageBreak(TRUE, 35);
+		$pdf->SetAutoPageBreak(TRUE, 35);
     $pdf->SetFont('helvetica', '', 8);
     $pdf->setFontSubsetting(false);
     
@@ -5566,7 +5566,7 @@ public function downloadProfile($employee_id = null){
     
 
     $data['employee'] = $employee;
-	$data['activemenu'] = 'employee';
+		$data['activemenu'] = 'employee';
     $data['activesubmenu'] = 'empdata';
 
     $this->load->view('employee/downloadProfile', $data);
@@ -5690,7 +5690,7 @@ public function mediclaim($employee_id = null)
                     ON d.designation_id = e.designation_id
                     WHERE e.employee_id = ".$employee_id);
 
-	$medical = $this->db->where('employee_id', $employee_id)
+		$medical = $this->db->where('employee_id', $employee_id)
                         ->get('employee_medical')
                         ->row_array();
 
@@ -5704,7 +5704,7 @@ public function mediclaim($employee_id = null)
 
     $data['designation'] = $designation[0];
 
-	$data['activemenu'] = 'employee';
+		$data['activemenu'] = 'employee';
     $data['activesubmenu'] = 'empdata';
 
     $this->load->view('employee/mediclaim', $data);
@@ -5752,14 +5752,14 @@ public function printMediclaim($employee_id = null)
     $pdf->SetSubject('Mediclaim Enrollment');
 
     $pdf->SetMargins(15, 45, 15);
-$pdf->SetAutoPageBreak(TRUE, 30);
-$pdf->SetFont('helvetica', '', 9);
+		$pdf->SetAutoPageBreak(TRUE, 30);
+		$pdf->SetFont('helvetica', '', 9);
 
-$pdf->setPrintHeader(true);
-$pdf->setPrintFooter(true);
+		$pdf->setPrintHeader(true);
+		$pdf->setPrintFooter(true);
 
-$pdf->AddPage();
-$pdf->writeHTML($html, true, false, true, false, '');
+		$pdf->AddPage();
+		$pdf->writeHTML($html, true, false, true, false, '');
 
     date_default_timezone_set("Asia/Kolkata");
     $filename = 'Mediclaim-' . date("YmdHis") . '.pdf';
@@ -5810,14 +5810,14 @@ public function relieving_letter($employee_id = null)
     $pdf->SetAuthor('AB ENTERPRISES');
     $pdf->SetTitle('Relieving Letter & Exit Clearance');
     $pdf->SetMargins(15, 45, 15);
-	$pdf->SetAutoPageBreak(TRUE, 35);
-	$pdf->SetFont('helvetica', '', 11);
+		$pdf->SetAutoPageBreak(TRUE, 35);
+		$pdf->SetFont('helvetica', '', 11);
 
-	$pdf->setPrintHeader(true);
-	$pdf->setPrintFooter(true);
+		$pdf->setPrintHeader(true);
+		$pdf->setPrintFooter(true);
 
     $pdf->AddPage();
-$pdf->writeHTML($html, true, false, true, false, '');
+		$pdf->writeHTML($html, true, false, true, false, '');
 
     $filename = 'Relieving-Exit-' . date("YmdHis") . '.pdf';
     $pdf->Output($filename, 'I');
@@ -5853,19 +5853,19 @@ public function emp_security($employee_id = null)
     $pdf = new pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, 'A4', true, 'UTF-8', false);
 
     $pdf->SetCreator(PDF_CREATOR);
-	$pdf->SetAuthor('AB ENTERPRISE');
-	$pdf->SetTitle('Blank Cheque for Security & Acknowledgement');
-	$pdf->SetSubject('Security Cheque Acknowledgement');
+		$pdf->SetAuthor('AB ENTERPRISE');
+		$pdf->SetTitle('Blank Cheque for Security & Acknowledgement');
+		$pdf->SetSubject('Security Cheque Acknowledgement');
 
-	$pdf->SetMargins(15, 45, 15);
-	$pdf->SetAutoPageBreak(TRUE, 35);
-	$pdf->SetFont('helvetica', '', 11);
+		$pdf->SetMargins(15, 45, 15);
+		$pdf->SetAutoPageBreak(TRUE, 35);
+		$pdf->SetFont('helvetica', '', 11);
 
-	$pdf->setPrintHeader(true);
-	$pdf->setPrintFooter(true);
+		$pdf->setPrintHeader(true);
+		$pdf->setPrintFooter(true);
 
-	$pdf->AddPage();
-	$pdf->writeHTML($html, true, false, true, false, '');
+		$pdf->AddPage();
+		$pdf->writeHTML($html, true, false, true, false, '');
 
     date_default_timezone_set("Asia/Kolkata");
     $filename = 'emp_security_' . date("YmdHis") . '.pdf';
@@ -5903,11 +5903,11 @@ public function joining_kit($employee_id = null)
     $pdf->SetSubject('Employee Onboarding Kit');
 
     $pdf->SetMargins(15, 45, 15);
-	$pdf->SetAutoPageBreak(TRUE, 35);
-	$pdf->SetFont('helvetica', '', 11);
+		$pdf->SetAutoPageBreak(TRUE, 35);
+		$pdf->SetFont('helvetica', '', 11);
 
-	$pdf->setPrintHeader(true);
-	$pdf->setPrintFooter(true);
+		$pdf->setPrintHeader(true);
+		$pdf->setPrintFooter(true);
 
     $pdf->AddPage();
 
@@ -5981,7 +5981,7 @@ public function emp_epf_esi($employee_id = null)
                             ->get()
                             ->row();
 
-	$docs = $this->db->select('bk.*')
+		$docs = $this->db->select('bk.*')
                             ->from('bankandkyc bk')
                             ->join('employees e','e.employee_id=bk.employee_id')
                             ->where('e.employee_id',$employee_id)
@@ -5998,7 +5998,7 @@ public function emp_epf_esi($employee_id = null)
     					$data['pf']          = $pf;
 
     $this->load->view('employee/emp_epf_esi', $data);
-	$data['activemenu'] = 'employee';
+		$data['activemenu'] = 'employee';
     $data['activesubmenu'] = 'empdata';
 }
 
@@ -6037,26 +6037,26 @@ public function print_emp_epf_esi($employee_id = null)
     $data['employee']    = $employee;
     $data['designation'] = $designation;
     $data['pf']          = $pf;
-	$data['docs']        = $docs;
+		$data['docs']        = $docs;
 
     $html = $this->load->view('employee/print_emp_epf_esi',$data,TRUE);
 
     $this->load->library('pdf');
     $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-	$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('AB ENTERPRISE');
-$pdf->SetTitle('EPF & ESI');
-$pdf->SetSubject('EPF & ESI');
-
-$pdf->SetMargins(15, 45, 15);
-$pdf->SetAutoPageBreak(TRUE, 35);
-$pdf->SetFont('helvetica', '', 10);
-
-$pdf->setPrintHeader(true);
-$pdf->setPrintFooter(true);
-
-$pdf->AddPage();
-$pdf->writeHTML($html, true, false, true, false, '');
+		$pdf->SetCreator(PDF_CREATOR);
+		$pdf->SetAuthor('AB ENTERPRISE');
+		$pdf->SetTitle('EPF & ESI');
+		$pdf->SetSubject('EPF & ESI');
+		
+		$pdf->SetMargins(15, 45, 15);
+		$pdf->SetAutoPageBreak(TRUE, 35);
+		$pdf->SetFont('helvetica', '', 10);
+		
+		$pdf->setPrintHeader(true);
+		$pdf->setPrintFooter(true);
+		
+		$pdf->AddPage();
+		$pdf->writeHTML($html, true, false, true, false, '');
 
     $filename = 'EPF_ESI_'.$employee_id.'_'.date('YmdHis').'.pdf';
     $pdf->Output($filename, 'I');
