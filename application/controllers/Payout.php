@@ -271,14 +271,10 @@ private function calculateTataAutoTw($dpd,$vehicle,$recovery,$paid,$emi)
 
         $percent = 0;
 
-        /* EMI / PART PAYMENT */
-
         if($paid < $emi)
         {
             $percent = 10;
         }
-
-        /* SETTLEMENT 450+ DPD */
 
         elseif($dpd >= 450)
         {
@@ -305,8 +301,6 @@ private function calculateTataAutoTw($dpd,$vehicle,$recovery,$paid,$emi)
         }
 
         }
-
-        /* FORECLOSURE */
 
         if($recovery >100)
         {
