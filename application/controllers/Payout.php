@@ -104,7 +104,6 @@ public function process()
 
 private function calculateTataBlpl($bkt,$recovery,$paid)
 {
-
         $payout=0;
         $percent='';
 
